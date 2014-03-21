@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321161946) do
+ActiveRecord::Schema.define(version: 20140321170029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,35 @@ ActiveRecord::Schema.define(version: 20140321161946) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "graphs", force: true do |t|
+    t.string   "name"
+    t.string   "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "graphs", ["post_id"], name: "index_graphs_on_post_id", using: :btree
+
+  create_table "post_tickets", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "ticket_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "post_tickets", ["post_id"], name: "index_post_tickets_on_post_id", using: :btree
+  add_index "post_tickets", ["ticket_id"], name: "index_post_tickets_on_ticket_id", using: :btree
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "subcategories", force: true do |t|
     t.string   "name"
@@ -60,5 +89,12 @@ ActiveRecord::Schema.define(version: 20140321161946) do
 
   add_index "tickets", ["category_id"], name: "index_tickets_on_category_id", using: :btree
   add_index "tickets", ["subcategory_id"], name: "index_tickets_on_subcategory_id", using: :btree
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
