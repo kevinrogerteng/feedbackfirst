@@ -9,8 +9,12 @@ FactoryGirl.define do
     category_id 1
   end
 
-  factory :ticket do
+  factory :ticket do 
     user
+    content
+    browser
+    category_id 1
+    subcategory_id 1
     ticket_tag_id 1
   end
 

@@ -4,17 +4,29 @@ namespace :db do
 
   make_categories
   make_tags
-  category = Category.all
+  categories = Category.all
+  tags = Tag.all
 
-    Ticket.populate 10 do |ticket|
+
+    Ticket.populate 100 do |ticket|
+      ticket.name = Faker::Name.name
       ticket.user = Faker::Internet.safe_email
       ticket.content = Faker::Lorem.paragraph(2)
       ticket.browser = ["Mozilla", "Google Chrome", "Internet Explorer", "Opera"]
-      ticket.category_id = category.sample.id
+      ticket.category_id = categories.sample.id
       subcategories = Category.find(ticket.category_id).subcategories
       ticket.subcategory_id = subcategories.sample.id
     end
+
+  seed_tickets = Ticket.all
+
+    seed_tickets.each do |x|
+      4.times do |y|
+        x.tags << tags.sample
+      end
+    end
   end
+
 end
 
 def make_categories
