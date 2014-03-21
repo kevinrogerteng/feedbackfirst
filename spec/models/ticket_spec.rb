@@ -11,4 +11,10 @@ describe Ticket do
     tag2 = ticket.tags.create(name: "tag2")
     ticket.tags.should eq([tag1, tag2])
   end
+  it 'can be associated to two posts' do
+    ticket = Ticket.create
+    post1 = ticket.posts.create
+    post2 = ticket.posts.create
+    ticket.posts.should eq ([post1, post2])
+  end
 end

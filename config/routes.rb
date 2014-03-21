@@ -1,7 +1,4 @@
 Feedbackfirst::Application.routes.draw do
-
-  get "session/create"
-  get "session/delete"
-  get "user/create"
-  get "user/delete"
+resources :posts, only: [:index, :create, :delete, :update]
+root to: "posts#index"
 end
