@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PostTickets do
+describe PostTicket do
   it {should belong_to(:post)}
   it {should belong_to(:ticket)}
 
