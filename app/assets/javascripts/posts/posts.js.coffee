@@ -1,5 +1,0 @@
-FeedbackFirstApp = angular.module("FeedbackFirstApp", []
-)
-
-
-

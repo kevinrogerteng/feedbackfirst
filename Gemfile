@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 1.2'
 
 group :development do
   gem 'faker', '~> 1.3.0'
-  gem 'quiet_assets'
+  # gem 'quiet_assets'
   gem 'populator', '~> 1.0.0'
 end
 
