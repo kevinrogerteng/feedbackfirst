@@ -55,7 +55,7 @@ describe "Post" do
     context 'Given a post with params' do
       it 'should be successful' do
         post posts_path post: {title: "anotherSample", description: "lalala"}
-        response.status.should == 200
+        response.status.should == 302
       end
     end
   end
