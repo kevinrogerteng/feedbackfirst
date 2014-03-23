@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require sugar
 //= require angular-1.2.14/angular.min 
 //= require angular-1.2.14/angular-route.min
 //= require angular-1.2.14/angular-resource.js

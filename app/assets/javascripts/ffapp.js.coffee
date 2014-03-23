@@ -4,8 +4,10 @@ ffApp.controller("ffAppCtrl", ["$scope", "Api",
   ($scope, Api) ->
     $scope.message = "hello world!"
     Api.Posts.query((data) ->
-        console.log(data)
         $scope.posts = data
+      )
+    Api.Tickets.query((data) ->
+        $scope.tickets = data
       )
   ])
 
