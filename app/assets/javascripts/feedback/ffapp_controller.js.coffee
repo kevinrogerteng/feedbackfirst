@@ -1,6 +1,6 @@
 ffAppCtrl = angular.module("ffAppCtrl", [])
 
-ffAppCtrl.controller("ffAppCtrl", ["$scope", "Api",
+ffAppCtrl.controller("ffAppCtrl",
   ($scope, Api) ->
 
     Api.Posts.query((data) ->
@@ -9,4 +9,4 @@ ffAppCtrl.controller("ffAppCtrl", ["$scope", "Api",
     Api.Tickets.query((data) ->
         $scope.tickets = data
       )
-  ])
+  )
