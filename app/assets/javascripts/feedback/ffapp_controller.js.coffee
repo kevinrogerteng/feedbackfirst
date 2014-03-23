@@ -1,8 +1,8 @@
 ffAppCtrl = angular.module("ffAppCtrl", [])
 
-ffAppCtrl.controller("ffAppCtrl", ["$scope", "Api",
+ffAppCtrl.controller("ffAppCtrl", "Api", ["$scope", "Api",
   ($scope, Api) ->
-    
+
     Api.Posts.query((data) ->
         $scope.posts = data
       )
