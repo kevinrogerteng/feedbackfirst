@@ -4,3 +4,4 @@ ffAppRouter.config(["$routeProvider",
   ($routeProvider) ->
     $routeProvider.when("/", {templateUrl: "/posts", controller: "ffAppCtrl"})
   ])
+
