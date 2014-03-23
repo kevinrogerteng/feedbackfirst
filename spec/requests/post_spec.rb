@@ -23,22 +23,21 @@ describe "Post" do
     end
 
     it "should return all posts made as JSON" do
-      @result["posts"].should_not be_nil
-      @result["posts"].should be_kind_of Array
-      @result["posts"].first.should be_kind_of Hash
-      @result["posts"].length.should eq(1)
+      @result.should_not be_nil
+      @result.should be_kind_of Array
+      @result.length.should eq(1)
     end
 
     it "should return a post with number of ticket associated" do
-      @result["posts"].first['tickets'].length.should eq(2)
+      @result.first['tickets'].length.should eq(2)
     end
 
     it "should have a title" do 
-      @result["posts"].first['title'].should eq(@post.title)
+      @result.first['title'].should eq(@post.title)
     end
 
     it "should include the name of a user" do
-      @result["posts"].first['user_id'].should eq(@user.id)
+      @result.first['user_id'].should eq(@user.id)
     end
   end
 

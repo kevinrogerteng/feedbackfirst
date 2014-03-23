@@ -1,0 +1,15 @@
+
+
+<form ng-submit="addEntry()">
+    <input type="text" ng-model="newEntry.name">
+    <input type="submit" value="Add">
+</form>
+
+{{newEntry.name}}
+{{message}}
+
+<div ng-repeat="post in posts">
+  <h1>{{post.title}}</h1>
+  <h1>{{post.tickets.length}}
+</div>
+
