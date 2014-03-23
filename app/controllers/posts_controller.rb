@@ -4,8 +4,7 @@ class PostsController < ApplicationController
     @tickets = Ticket.all
     respond_to do |f|
         f.html  {render :layout => false }
-        f.json {render :json => {:posts => @posts.as_json(include: :tickets),
-                                :tickets => @tickets.as_json}}
+        f.json {render :json => @posts.as_json(include: :tickets)}
     end
   end
 

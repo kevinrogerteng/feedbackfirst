@@ -1,11 +1,11 @@
 ffApp = angular.module("ffApp", ["ngResource", "ffAppRouter"])
 
-ffApp.controller("ffAppCtrl", ["$scope", "PostEntry",
-  ($scope, PostEntry) ->
+ffApp.controller("ffAppCtrl", ["$scope", "Api",
+  ($scope, Api) ->
     $scope.message = "hello world!"
-    PostEntry.query((data) ->
+    Api.Posts.query((data) ->
         console.log(data)
-        $scope.posts = data.posts
+        $scope.posts = data
       )
   ])
 
@@ -20,6 +20,6 @@ ffApp.config(["$httpProvider",($httpProvider)->
      $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
 ])
 
-ffApp.factory "PostEntry", ($resource) ->
-    $resource("/posts.json", {id: @id}, {'update': {method: 'PUT'}}, {'query': {method: 'GET', isArray:false}})
-
+ffApp.factory "Api", ($resource) ->
+    Posts: $resource("/posts.json", {id: @id}, {'update': {method: 'PUT'}})
+    Tickets: $resource("/tickets.json", {id: @id}, {'update': {method: 'PUT'}})
