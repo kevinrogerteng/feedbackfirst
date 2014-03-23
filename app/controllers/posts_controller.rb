@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
+  respond_to :json
   def index
-    posts = Post.includes(:tickets)
-    respond_to do |f|
-        f.html {render :layout => false }
-        f.json {render :json => {"posts" => posts.as_json(include: :tickets)}}
-    end
+    # posts = Post.includes(:tickets)
+    # respond_to do |f|
+    #     f.html
+    #     f.json {render :json => {"posts" => posts.as_json(include: :tickets)}}
+    # end
   end
 
   def create
