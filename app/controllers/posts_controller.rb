@@ -22,6 +22,7 @@ class PostsController < ApplicationController
   def show
     post = Post.where(id: params[:id]).includes(:tickets).includes(:graphs)
     respond_to do |f|
+        f.html  {render :layout => false }
         f.json  {render :json => post.as_json(include: [:graphs, :tickets])}
     end
   end
