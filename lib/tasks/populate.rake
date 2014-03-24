@@ -4,8 +4,10 @@ namespace :db do
 
   make_categories
   make_tags
+  make_posts
   categories = Category.all
   tags = Tag.all
+  posts = Post.all
 
 
     Ticket.populate 100 do |ticket|
@@ -25,9 +27,21 @@ namespace :db do
         x.tags << tags.sample
       end
     end
+    posts.each do |x|
+      40.times do |y|
+        x.tickets << seed_tickets.sample
+      end
+    end
 
   end
 
+end
+
+def make_posts
+  Post.populate 2 do |post|
+    post.title = Faker::Lorem.words
+    post.description = Faker::Lorem.paragraph
+  end
 end
 
 def make_categories
