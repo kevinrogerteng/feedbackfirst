@@ -1,10 +1,8 @@
 <div ng-repeat= "single_post in post">
   <h2>{{single_post.title}}</h2>
-  <ul class="nav nav-tabs">
-    <li ng-class="active"><a ng-click="clickDescription()">Description</a></li>
-    <li><a ng-click="clickGraphs()">Graphs</a></li>
-    <li><a ng-click="clickTickets()">Tickets</a></li>
-  </ul>
-
-  <span
+  <tabset>
+    <tab heading="Description">{{single_post.description}}</tab>
+    <tab heading="Graphs">{{single_post.graphs}}</tab>
+    <tab heading="Tickets" active="tab.active" disabled="tab.disabled" ><div ng-repeat="ticket in single_post.tickets">{{ticket}}</div></tab>
+  </tabset>
 </div>
