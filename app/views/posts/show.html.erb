@@ -3,6 +3,19 @@
   <tabset>
     <tab heading="Description">{{single_post.description}}</tab>
     <tab heading="Graphs">{{single_post.graphs}}</tab>
-    <tab heading="Tickets" active="tab.active" disabled="tab.disabled" ><div ng-repeat="ticket in single_post.tickets">{{ticket}}</div></tab>
+    <tab heading="Tickets" active="tab.active" disabled="tab.disabled" >
+      <table class="table table-striped">
+        <tr>
+          <th>Ticket Number</th>
+          <th>Name</th>
+          <th>Content</th>
+        </tr>
+        <tr ng-repeat="ticket in single_post.tickets">
+          <td> {{ticket.id}}</td>
+          <td> {{ticket.user}}</td>
+          <td> {{ticket.content}}</td>
+        </tr>
+      </table>
+    </tab>
   </tabset>
 </div>
