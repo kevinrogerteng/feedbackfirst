@@ -40,7 +40,9 @@ end
 def make_posts
   Post.populate 2 do |post|
     post.title = Faker::Lorem.words
-    post.description = Faker::Lorem.paragraph
+    post.description = "Bacon ipsum dolor sit amet jowl drumstick landjaeger fatback pork belly turkey. Chicken turkey doner andouille prosciutto tenderloin ham. Pancetta chuck turkey filet mignon, kielbasa andouille short ribs beef doner shankle pork belly tri-tip. Ball tip sausage brisket, kielbasa short ribs shoulder hamburger meatball andouille. Turkey pork turducken biltong fatback jerky ribeye. Filet mignon brisket shankle meatball pancetta. Meatball short loin pork belly pig.
+
+Sirloin shankle cow jowl short loin frankfurter strip steak meatball. Doner kevin short ribs, rump ribeye jerky jowl sausage brisket pork andouille. Cow jowl ground round porchetta fatback tongue, pancetta drumstick turkey short loin shankle. Pork belly andouille short loin ribeye."
   end
 end
 

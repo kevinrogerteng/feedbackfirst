@@ -1,13 +1,22 @@
-<div class="totaltickets">
-  <h1>{{tickets.length}}</h1>
-</div>
-<div class="filterPosts">
-  Some filter stuff here
-</div>
-<div ng-repeat="post in posts">
-  <div class="post">
-    <h3>{{post.tickets.length}}</h3>
-    <h2><a href="#/posts/{{post.id}}">{{post.title}}</a></h2>
-  </div>
-</div>
+
+<div class="row">
+    <div class="filterPosts col-md-10">
+      Some filter stuff here
+    </div>
+
+    <div class="totaltickets col-md-2">
+      <h1>{{tickets.length}}</h1>
+    </div>
+</div> <!--this closes totaltickets-->
+
+<div class="row">
+    <div ng-repeat="post in posts">
+      <div class="post col-md-12">
+        <div class="postTicket"><h3>{{post.tickets.length}}</h3></div>
+        <h2><a href="#/posts/{{post.id}}">{{post.title}}</a></h2>
+        <h3> Username </h3>
+        <div class=""></div>
+      </div>
+    </div>
+</div> <!--this closes the class row for posts-->
 

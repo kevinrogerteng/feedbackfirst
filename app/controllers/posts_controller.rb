@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    post = Post.where(id: params[:id]).includes(:tickets).includes(:graphs)
+    post = Post.where(id: params[:id]).includes(:graphs, tickets: [:tags])
     # post = Post.includes(:tickets => :tags).includes(:graphs).find(params[:id])
     respond_to do |f|
         f.html  {render :layout => false }
