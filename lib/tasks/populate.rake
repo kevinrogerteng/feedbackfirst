@@ -25,6 +25,7 @@ namespace :db do
         x.tags << tags.sample
       end
     end
+
   end
 
 end
