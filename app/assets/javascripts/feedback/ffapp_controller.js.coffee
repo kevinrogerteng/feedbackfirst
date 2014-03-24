@@ -10,3 +10,9 @@ ffAppCtrl.controller("ffAppCtrl", ["$scope", "Api",
         $scope.tickets = data
       )
   ])
+
+ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "$http",
+  ($scope, $routeParams, $http) ->
+    PostId = 
+
+  ])
