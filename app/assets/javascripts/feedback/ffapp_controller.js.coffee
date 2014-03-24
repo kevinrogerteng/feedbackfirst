@@ -9,6 +9,8 @@ ffAppCtrl.controller("ffAppCtrl", ["$scope", "Api",
     Api.Tickets.query((data) ->
         $scope.tickets = data
       )
+
+    $scope.isCollapsed = true
   ])
 
 ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api",

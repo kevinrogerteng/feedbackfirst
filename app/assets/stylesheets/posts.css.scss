@@ -1,8 +1,15 @@
+.container {
+  margin-top: 80px;
+}
 .post{
   border: 2px solid black;
   margin-top: 10px;
   padding: 10px;
 
+}
+.newPost{
+  border: 2px solid black;
+  float: right;
 }
 .postTicket{
   border: 2px solid black;
