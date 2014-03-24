@@ -1,6 +1,10 @@
-<h1> THIS IS THE SHOW PAGE </h1>
-
 <div ng-repeat= "single_post in post">
   <h2>{{single_post.title}}</h2>
-  {{single_post.tickets}}
+  <ul class="nav nav-tabs">
+    <li ng-class="active"><a ng-click="clickDescription()">Description</a></li>
+    <li><a ng-click="clickGraphs()">Graphs</a></li>
+    <li><a ng-click="clickTickets()">Tickets</a></li>
+  </ul>
+
+  <span
 </div>
