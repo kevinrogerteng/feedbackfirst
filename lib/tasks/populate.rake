@@ -5,9 +5,11 @@ namespace :db do
   make_categories
   make_tags
   make_posts
+  make_user
   categories = Category.all
   tags = Tag.all
   posts = Post.all
+  users = User.all
 
 
     Ticket.populate 100 do |ticket|
@@ -22,15 +24,19 @@ namespace :db do
 
   seed_tickets = Ticket.all
 
-    seed_tickets.each do |x|
+    seed_tickets.each do |ticket|
       4.times do |y|
-        x.tags << tags.sample
+        ticket.tags << tags.sample
       end
     end
-    posts.each do |x|
+    posts.each do |post|
       40.times do |y|
-        x.tickets << seed_tickets.sample
+        post.tickets << seed_tickets.sample
       end
+    end
+
+    users.each do |user|
+      user.posts << posts.sample
     end
 
   end
@@ -38,11 +44,18 @@ namespace :db do
 end
 
 def make_posts
-  Post.populate 2 do |post|
+  Post.populate 10 do |post|
     post.title = Faker::Lorem.words
     post.description = "Bacon ipsum dolor sit amet jowl drumstick landjaeger fatback pork belly turkey. Chicken turkey doner andouille prosciutto tenderloin ham. Pancetta chuck turkey filet mignon, kielbasa andouille short ribs beef doner shankle pork belly tri-tip. Ball tip sausage brisket, kielbasa short ribs shoulder hamburger meatball andouille. Turkey pork turducken biltong fatback jerky ribeye. Filet mignon brisket shankle meatball pancetta. Meatball short loin pork belly pig.
 
 Sirloin shankle cow jowl short loin frankfurter strip steak meatball. Doner kevin short ribs, rump ribeye jerky jowl sausage brisket pork andouille. Cow jowl ground round porchetta fatback tongue, pancetta drumstick turkey short loin shankle. Pork belly andouille short loin ribeye."
+  end
+end
+
+def make_user
+  User.populate 5 do |user|
+    user.name = Faker::Name.name
+    user.email = Faker::Internet.safe_email
   end
 end
 

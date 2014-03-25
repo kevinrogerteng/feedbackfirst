@@ -38,7 +38,8 @@ describe "Post" do
     end
 
     it "should include the name of a user" do
-      @result.first['user_id'].should eq(@user.id)
+      user = @result.first['user']
+      user['name'].should eq(@user.name)
     end
   end
 
