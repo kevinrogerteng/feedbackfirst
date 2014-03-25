@@ -6,7 +6,7 @@
   <%= javascript_include_tag "application"%>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body ng-controller="ffAppCtrl">
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -21,10 +21,14 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="#">My Posts</a></li>
+        <li><a ng-click="newPost()">Add Post</a></li>
       </ul>
       <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
     </div>
   </nav>
     <div ng-view class="container"></div>
+    <div collapse="isCollapsed">
+          <div class="well well-lg">APPEAR!!</div> 
+    </div>
 </body>
 </html>

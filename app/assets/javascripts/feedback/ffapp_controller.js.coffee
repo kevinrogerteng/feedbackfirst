@@ -14,7 +14,8 @@ ffAppCtrl.controller("ffAppCtrl", ["$scope", "Api",
     $scope.isCollapsed = true
     $scope.progressValue = (data) ->
       return data.tickets.length
-
+    $scope.newPost = () ->
+      console.log("something!")
   ])
 
 ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api",
