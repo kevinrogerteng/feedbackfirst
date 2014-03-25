@@ -30,7 +30,7 @@ namespace :db do
       end
     end
     posts.each do |post|
-      40.times do |y|
+      rand(100).times do |y|
         post.tickets << seed_tickets.sample
       end
       users.sample.posts << post

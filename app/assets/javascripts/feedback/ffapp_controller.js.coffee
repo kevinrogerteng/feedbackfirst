@@ -12,6 +12,8 @@ ffAppCtrl.controller("ffAppCtrl", ["$scope", "Api",
       )
 
     $scope.isCollapsed = true
+    $scope.progressValue = (data) ->
+      return data.tickets.length
 
   ])
 
