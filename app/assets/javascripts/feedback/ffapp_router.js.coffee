@@ -10,5 +10,9 @@ ffAppRouter.config(["$routeProvider",
       templateUrl: "/posts/show"
       controller: "postShowDetail"
     )
+    .when("/sessions/new"
+      templateUrl: "/sessions/new"
+      controller: "LogInCtrl"
+    )
   ])
 

@@ -2,7 +2,8 @@ ffApp = angular.module("ffApp", [
   "ffAppService",
   "ffAppCtrl", 
   "ffAppRouter",
-  "ui.bootstrap"
+  "ui.bootstrap",
+  "logIn"
   ])
 
 ffApp.config(["$httpProvider",($httpProvider)->
