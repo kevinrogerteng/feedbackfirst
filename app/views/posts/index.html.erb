@@ -12,15 +12,18 @@
     <div ng-repeat="post in posts">
       <div class="post col-md-6">
         <div class="postBox">
-          <div class="postTicket"><h3>{{post.tickets.length}}</h3></div>
-          <h2><a href="#/posts/{{post.id}}">{{post.title}}</a></h2>
-          <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">View Description</button>
-          <hr>
-          <div collapse="isCollapsed">
-            <div class="well well-lg">{{post.description}}</div> 
-          </div>
-          <h3> {{post.user.name}}</h3>
-          <div class=""></div>
+              <progressbar max="max" value="100" type="success"><span style="color:black; white-space:nowrap;">{{post.tickets.length}} / {{max}}</span></progressbar>
+
+              <div class="postTicket"><h3>{{post.tickets.length}}</h3></div>
+              <h2><a href="#/posts/{{post.id}}">{{post.title}}</a></h2>
+              <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">View Description</button>
+              <hr>
+              <div collapse="isCollapsed">
+                <div class="well well-lg">{{post.description}}</div> 
+              </div>
+              <h3>by: {{post.user.name}}</h3>
+              <div class=""></div>
+
         </div>
       </div>
     </div>
