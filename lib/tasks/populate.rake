@@ -33,12 +33,8 @@ namespace :db do
       40.times do |y|
         post.tickets << seed_tickets.sample
       end
+      users.sample.posts << post
     end
-
-    users.each do |user|
-      user.posts << posts.sample
-    end
-
   end
 
 end
