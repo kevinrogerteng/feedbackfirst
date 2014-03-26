@@ -25,7 +25,7 @@
       </ul>
       <span ng-show="!checkUser()" class="navbar-text navbar-right"><a href="#/sessions/new" class="navbar-link">Sign In</a></span>
       <span ng-show="checkUser()" class="navbar-text navbar-right"><a href="#/sessions/new" class="navbar-link">Sign Out</a></span>
-      <span ng-show="checkUser()"><p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{user.name}}</a></p></span>
+      <span ng-show="checkUser()"><p class="navbar-text navbar-right"><a href="#" class="navbar-link">{{user.name}}</a></p></span>
     </div>
   </nav>
     <div ng-view class="container"></div>

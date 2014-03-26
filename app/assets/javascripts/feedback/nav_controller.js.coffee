@@ -5,6 +5,8 @@ navBar.controller("navBarCtrl", ['$scope', 'AuthService', '$rootScope'
     $scope.userAuth = AuthService.getUserAuthenticated()
     console.log($scope.userAuth)
     $scope.checkUser = ()-> 
-      $scope.user = AuthService.getCurrentUser()
-      return AuthService.getUserAuthenticated()
+      $scope.user = {id: 1, name: "Kevin Roger Teng", email: "kevin@gmail.com"}
+      return true
+      # $scope.user = AuthService.getCurrentUser()
+      # return AuthService.getUserAuthenticated()
 ])
