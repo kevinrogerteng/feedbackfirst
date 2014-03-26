@@ -1,33 +1,38 @@
 authService = angular.module("auth", [])
 
-authService.service("AuthService", 
+authService.service("AuthService", [
   ()->
-    userIsAuthenticated = false
-    this.setUserAuthenticated = (value) ->
-      userIsAuthenticated = value
+    @userIsAuthenticated = false
+    @setUserAuthenticated = (value, user) ->
+      @userIsAuthenticated = value
+      @currentUser = user
+    
+    @getUserAuthenticated = () ->
+      @userIsAuthenticated
+    return
+    console.log(@userIsAuthenticated)
+  ])
 
-    this.getUserAuthenticated = ()->
-      return userIsAuthenticated
-  )
+logInService = angular.module("logIn", [])
 
-logInService = angular.module("logIn", ["auth"])
+logInService.controller('LogInCtrl', ['$scope', 'Api', '$location', 'AuthService'
+  ($scope, Api, $location, AuthService) ->
+    $scope.isTrue = true
 
-logInService.controller('LogInCtrl', ['$scope', 'Api', 'AuthService', '$location'
-  ($scope, Api, AuthService, $location) ->
-
-    if AuthService.getUserAuthenticated
+    if AuthService.getUserAuthenticated()
       $location.path("/posts")
 
     $scope.attemptLogin = ()->
       Api.LogIn.create({'email':$scope.credentials.email, 'password':$scope.credentials.password}, (data)->
         if (data.error)
           $scope.error = data.error
+          AuthService.userIsAuthenticated = false
         else
-          AuthService.setUserAuthenticated(true)
-          $scope.user = data
-          console.log($scope.user)
+          AuthService.setUserAuthenticated(true, data)
+          $location.path("/")
         )
 ])
+
 
 
 

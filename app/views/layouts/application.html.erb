@@ -6,8 +6,8 @@
   <%= javascript_include_tag "application"%>
   <%= csrf_meta_tags %>
 </head>
-<body ng-controller="ffAppCtrl">
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="navBarCtrl">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
@@ -22,8 +22,9 @@
       <ul class="nav navbar-nav">
         <li><a href="#">My Posts</a></li>
         <li><a ng-click="newPost()">Add Post</a></li>
+        <li ng-show="!checkUser()"><a href="#/sessions/new">Sign In</a></li>
       </ul>
-      <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+      <span ng-show="checkUser()"><p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{user}}</a></p></span>
     </div>
   </nav>
     <div ng-view class="container"></div>
