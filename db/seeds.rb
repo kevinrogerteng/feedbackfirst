@@ -1,1 +1,2 @@
 User.create(name: "Kevin", email: "kevin@gmail.com", password: '123456', password_confirmation: '123456' )
+User.create(name: "Brian", email: "brian@gmail.com", password: '123456', password_confirmation: '123456' )

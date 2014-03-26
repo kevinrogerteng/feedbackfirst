@@ -16,6 +16,7 @@ class PostsController < ApplicationController
 
   def create
     new_post = Post.create(post_params)
+    binding.pry
     respond_to do |f|
         f.html {redirect_to posts_path}
         f.json {render json: new_post }
@@ -40,6 +41,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description)
+    params.require(:post).permit(:title, :description, :user_id)
   end
 end

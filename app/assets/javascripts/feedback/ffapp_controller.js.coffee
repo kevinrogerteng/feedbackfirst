@@ -22,7 +22,14 @@ ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api",
       )
   ])
 
-ffAppCtrl.controller("newPost", ["$scope", "Api",
-  ($scope, Api) ->
-    
+ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService"
+  ($scope, Api, $location, AuthService) ->
+    $scope.submitPost = ()->
+      user = AuthService.getCurrentUser()
+      post = {
+        title: $scope.post.title
+        description: $scope.post.description
+        user_id : user.id
+      }
+      Api.Posts.save(post)
   ])

@@ -1,12 +1,12 @@
 <h1> New Post </h1>
-<form role="form">
+<form role="form" ng-submit="submitPost()">
   <div class="form-group">
     <label >Title</label>
-    <input type="text" class="form-control" placeholder="Enter a title">
+    <input type="text" class="form-control" placeholder="Enter a title" ng-model="post.title">
   </div>
   <div class="form-group">
     <label>Description</label>
-    <textarea class="form-control" rows="3" placeholder="Enter a description"></textarea>
+    <textarea class="form-control" rows="3" placeholder="Enter a description" ng-model="post.description"></textarea>
   </div>
   <div class="form-group">
     <p class="help-block">Your can edit, add graphs and publish your posts by clicking on "My Posts" on your nav bar. Your new posts are saved as draft by default. </p>
