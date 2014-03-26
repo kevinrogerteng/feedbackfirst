@@ -2,18 +2,18 @@ authService = angular.module("auth", [])
 
 authService.service("AuthService", [
   ()->
-    @userIsAuthenticated = false
-    @currentUser = {}
+    @userIsAuthenticated = true
+    @currentUser = {id: 1, name: "Kevin Roger Teng", email: "kevin@gmail.com"}
 
     @setUserAuthenticated = (value, user) ->
       @userIsAuthenticated = value
-      @currentUser = user
+      return @currentUser = user
     
     @getUserAuthenticated = () ->
-      @userIsAuthenticated
+      return @userIsAuthenticated
 
     @getCurrentUser = () ->
-      @currentUser
+      return @currentUser
     return
   ])
 

@@ -16,7 +16,6 @@ class PostsController < ApplicationController
 
   def create
     new_post = Post.create(post_params)
-    binding.pry
     respond_to do |f|
         f.html {redirect_to posts_path}
         f.json {render json: new_post }
@@ -28,7 +27,7 @@ class PostsController < ApplicationController
 
   def show
     post = Post.where(id: params[:id]).includes(:graphs, tickets: [:tags])
-    # post = Post.includes(:tickets => :tags).includes(:graphs).find(params[:id])
+    
     respond_to do |f|
         f.html  {render :layout => false }
         f.json  {render :json => post.as_json(:include => [:graphs, :tickets => {:include => [:tags => {:only => :name}]}])}

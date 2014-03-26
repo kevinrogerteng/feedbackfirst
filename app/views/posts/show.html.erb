@@ -1,7 +1,9 @@
 <div ng-repeat= "single_post in post">
   <h2>{{single_post.title}}</h2>
   <tabset>
-    <tab heading="Description">{{single_post.description}}</tab>
+    <tab heading="Description" editable-text="single_post.description" e-form="textBtnForm">{{single_post.description}} <button class="btn btn-default" ng-click="textBtnForm.$show()" ng-hide="textBtnForm.$visible">
+    edit
+  </button></tab>
     <tab heading="Graphs">{{single_post.graphs}}</tab>
     <tab heading="Tickets" active="tab.active" disabled="tab.disabled" >
       <table class="table table-striped">
