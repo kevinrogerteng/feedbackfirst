@@ -14,17 +14,22 @@ ffAppCtrl.controller("ffAppCtrl", ["$scope", "Api", "$location", "AuthService"
 
   ])
 
-ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api",
-  ($scope, $routeParams, Api) ->
+ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api", "AuthService"
+  ($scope, $routeParams, Api, AuthService) ->
 
     Api.PostDetail.query({"id":$routeParams.id}, (data)->
         $scope.post = data
       )
 
     $scope.updatePost = (post) ->
-      console.log("something")
-      console.log(post)
       Api.PostDetail.update("id": post.id, post)
+
+    $scope.checkOwner = (post) ->
+      $scope.currentUser = AuthService.getCurrentUser()
+      if post.user_id is $scope.currentUser.id
+        return true
+      else
+        return false
   ])
 
 ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService"
