@@ -2,7 +2,10 @@ ffAppRouter = angular.module("ffAppRouter", ["ngRoute"])
 
 ffAppRouter.config(["$routeProvider",
   ($routeProvider) ->
-    $routeProvider.when("/"
+    $routeProvider.when("/posts/new"
+      templateUrl: "/posts/new"
+      controller: "newPost"
+    ).when("/"
       templateUrl: "/posts"
       controller: "ffAppCtrl"
     )
@@ -14,5 +17,6 @@ ffAppRouter.config(["$routeProvider",
       templateUrl: "/sessions/new"
       controller: "LogInCtrl"
     )
+    
   ])
 

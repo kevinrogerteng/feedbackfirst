@@ -11,8 +11,7 @@ ffAppCtrl.controller("ffAppCtrl", ["$scope", "Api", "$location"
         $scope.max = $scope.tickets.length
       )
     $scope.isCollapsed = true
-    $scope.newPost = () ->
-      console.log("something!")
+    
 
   ])
 
@@ -21,4 +20,9 @@ ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api",
     Api.PostDetail.query({"id":$routeParams.id}, (data)->
         $scope.post = data
       )
+  ])
+
+ffAppCtrl.controller("newPost", ["$scope", "Api",
+  ($scope, Api) ->
+    
   ])

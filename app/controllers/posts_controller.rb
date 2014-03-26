@@ -7,6 +7,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def new
+    respond_to do |f|
+        f.html {render :layout => false}
+        f.json {render :json }
+    end
+  end
+
   def create
     new_post = Post.create(post_params)
     respond_to do |f|
