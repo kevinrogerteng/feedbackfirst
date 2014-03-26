@@ -1,9 +1,32 @@
 <div ng-repeat= "single_post in post">
-  <h2>{{single_post.title}}</h2>
+  <span ng-hide="editing"><h2>{{single_post.title}}</h2></span>
   <tabset>
-    <tab heading="Description" editable-text="single_post.description" e-form="textBtnForm">{{single_post.description}} <button class="btn btn-default" ng-click="textBtnForm.$show()" ng-hide="textBtnForm.$visible">
-    edit
-  </button></tab>
+    <tab heading="Description">
+      <div ng-hide="editing"class="postDescription">
+        {{single_post.description}}
+      </div>
+
+
+      <div class="postDescription">
+        <form ng-show="editing" ng-submit="editing = false; updatePost(single_post)">
+          <div class="form-group">
+            <label >Title</label>
+            <input type="text" class="form-control" ng-model="single_post.title"required>
+          </div>
+
+          <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" rows="3" ng-model="single_post.description"></textarea>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Save</button>
+        </form>
+
+      </div>
+
+      <span ng-show="checkOwner"><button class="btn btn-default" ng-hide="editing" ng-click="editing = true">Edit</button></span>
+
+    </tab>
     <tab heading="Graphs">{{single_post.graphs}}</tab>
     <tab heading="Tickets" active="tab.active" disabled="tab.disabled" >
       <table class="table table-striped">

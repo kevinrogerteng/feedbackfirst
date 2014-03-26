@@ -16,9 +16,15 @@ ffAppCtrl.controller("ffAppCtrl", ["$scope", "Api", "$location", "AuthService"
 
 ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api",
   ($scope, $routeParams, Api) ->
+
     Api.PostDetail.query({"id":$routeParams.id}, (data)->
         $scope.post = data
       )
+
+    $scope.updatePost = (post) ->
+      console.log("something")
+      console.log(post)
+      Api.PostDetail.update("id": post.id, post)
   ])
 
 ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService"

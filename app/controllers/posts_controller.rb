@@ -23,6 +23,12 @@ class PostsController < ApplicationController
   end
 
   def update
+    update_post = Post.find(params[:id])
+    update_post.update_attributes(post_params)
+    respond_to do |f|
+        f.html {redirect_to posts_path}
+        f.json {render json: update_post }
+    end
   end
 
   def show
