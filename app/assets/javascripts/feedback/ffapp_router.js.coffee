@@ -17,6 +17,11 @@ ffAppRouter.config(["$routeProvider",
       templateUrl: "/sessions/new"
       controller: "LogInCtrl"
     )
+    .when("/users/:id/posts"
+      templateUrl: "/users/show"
+      controller: "userPostsShow"
+
+    )
     
   ])
 

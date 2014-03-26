@@ -1,7 +1,7 @@
 ffAppCtrl = angular.module("ffAppCtrl", [])
 
-ffAppCtrl.controller("ffAppCtrl", ["$scope", "Api", "$location"
-  ($scope, Api, $location) ->
+ffAppCtrl.controller("ffAppCtrl", ["$scope", "Api", "$location", "AuthService"
+  ($scope, Api, $location, AuthService) ->
 
     Api.Posts.query((data) ->
         $scope.posts = data
@@ -11,7 +11,8 @@ ffAppCtrl.controller("ffAppCtrl", ["$scope", "Api", "$location"
         $scope.max = $scope.tickets.length
       )
     $scope.isCollapsed = true
-    
+
+    $scope.currentUser = AuthService.getCurrentUser()
 
   ])
 

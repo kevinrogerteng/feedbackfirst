@@ -20,7 +20,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ng-show="checkUser()"><a href="#">My Posts</a></li>
+        <li ng-show="checkUser()"><a href="#/users/{{currentUser.id}}/posts">My Posts</a></li>
         <li ng-show="checkUser()"><a href="#/posts/new/">Add Post</a></li>
       </ul>
       <span ng-show="!checkUser()" class="navbar-text navbar-right"><a href="#/sessions/new" class="navbar-link">Sign In</a></span>
