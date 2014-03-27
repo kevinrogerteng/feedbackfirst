@@ -36,8 +36,7 @@ ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api", "AuthSe
     $scope.chartType = 'pie';
 
     $scope.config1 = {
-      labels: false,
-      title : "Products",
+      labels: false
       legend : {
         display:true,
         position:'right'

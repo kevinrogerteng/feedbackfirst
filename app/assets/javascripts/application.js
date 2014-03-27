@@ -15,6 +15,6 @@
 //= require angular-1.2.14/angular.min 
 //= require angular-1.2.14/angular-route.min
 //= require angular-1.2.14/angular-resource.js
-//= require angular-1.2.14/angular-charts.min
+//= require angular-1.2.14/angular-charts.js
 
 //= require_tree .
