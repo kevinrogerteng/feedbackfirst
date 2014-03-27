@@ -27,7 +27,29 @@
       <span ng-show="checkOwner(single_post)"><button class="btn btn-default" ng-hide="editing" ng-click="editing = true">Edit</button></span>
 
     </tab>
-    <tab heading="Graphs">{{single_post.graphs}}</tab>
+
+    <tab heading="Graphs">
+    <h1> Graphs Should go here! </h1>
+      <div class="charts">
+        <div ac-chart="chartType" ac-data="data1" ac-config="config1" id='chart' class='chart' style='witdh:25%'></div>
+      </div>
+
+      <form ng-submit="" class="graphForm">
+          <div class="form-group">
+            <label >Graph Name </label>
+            <input type="text" class="form-control" ng-model="graph.name" required>
+          </div>
+
+          <div class="form-group">
+            <label>Category</label>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Save</button>
+        </form>
+
+      </form>
+
+    </tab>
     <tab heading="Tickets" active="tab.active" disabled="tab.disabled" >
       <table class="table table-striped">
         <tr>

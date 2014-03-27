@@ -30,7 +30,60 @@ ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api", "AuthSe
         return true
       else
         return false
-  ])
+
+    $scope.data = {
+      series: ['Sales', 'Income', 'Expense', 'Laptops', 'Keyboards'],
+      data : [{
+        x : "Sales",
+        y: [100,500, 0],
+        tooltip:"this is tooltip"
+      },
+      {
+        x : "Not Sales",
+        y: [300, 100, 100]
+      },
+      {
+        x : "Tax",
+        y: [351]
+      },
+      {
+        x : "Not Tax",
+        y: [54, 0, 879]
+      }]     
+  }
+
+    $scope.data1 = {
+      data : [{
+        x : "sign_in",
+        y: [500],
+        tooltip:"this is tooltip"
+      },
+      {
+        x : "password_reset",
+        y: [123]
+      },
+      {
+        x : "mailing_list",
+        y: [351]
+      },
+      {
+        x : "Accounts",
+        y: [879]
+      }]     
+    }
+
+    $scope.chartType = 'pie';
+
+    $scope.config1 = {
+      labels: false,
+      title : "Products",
+      legend : {
+        display:true,
+        position:'right'
+      }
+    }
+
+])
 
 ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService"
   ($scope, Api, $location, AuthService) ->
