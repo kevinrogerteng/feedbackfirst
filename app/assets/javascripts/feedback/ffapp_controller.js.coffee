@@ -31,58 +31,29 @@ ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api", "AuthSe
       else
         return false
 
-    $scope.data = {
-      series: ['Sales', 'Income', 'Expense', 'Laptops', 'Keyboards'],
-      data : [{
-        x : "Sales",
-        y: [100,500, 0],
-        tooltip:"this is tooltip"
-      },
-      {
-        x : "Not Sales",
-        y: [300, 100, 100]
-      },
-      {
-        x : "Tax",
-        y: [351]
-      },
-      {
-        x : "Not Tax",
-        y: [54, 0, 879]
-      }]     
-  }
+    Api.Tags.query((data)->
+      $scope.tags = data
+      )
 
-    $scope.data1 = {
-      data : [{
-        x : "sign_in",
-        y: [500],
-        tooltip:"this is tooltip"
-      },
-      {
-        x : "password_reset",
-        y: [123]
-      },
-      {
-        x : "mailing_list",
-        y: [351]
-      },
-      {
-        x : "Accounts",
-        y: [879]
-      }]     
-    }
+    $scope.tagsChosen = {}
 
-    $scope.chartType = 'pie';
+    $scope.submitGraph = () ->
 
-    $scope.config1 = {
-      labels: false,
-      title : "Products",
-      legend : {
-        display:true,
-        position:'right'
-      }
-    }
+      console.log("this works!")
+      console.log($scope.graph.title)
 
+      tagsChose = []
+      angular.forEach($scope.tagsChosen, (checked, id)->
+        if checked
+          tagsChose.push($scope.tags[id])
+        )
+      console.log($scope.tagsChosen)
+        # graph = {
+        #   name: $scope.graph.name
+        #   tags: tagsChose
+        #   post_id: $routeParams.id
+        # }
+        # Api.newGraph.save(graph)
 ])
 
 ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService"

@@ -114,6 +114,8 @@ def make_tags
   tags = []
 
   tags << Tag.create(name: "angry")
+  tags << Tag.create(name: "happy")
+  tags << Tag.create(name: "accounts")
   tags << Tag.create(name: "UI")
   tags << Tag.create(name: "sign_in")
   tags << Tag.create(name: "password")
@@ -126,6 +128,7 @@ def make_tags
   tags << Tag.create(name: "cart_edit")
   tags << Tag.create(name: "cart_delete")
   tags << Tag.create(name: "payment_processor")
+  tags << Tag.create(name: "bad_payments")
   tags << Tag.create(name: "suggestion")
   tags << Tag.create(name: "shipment")
   tags << Tag.create(name: "wrong_item_shipment")
