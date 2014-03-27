@@ -6,6 +6,24 @@
 .graphForm{
   float: right;
 }
+
+body{
+  background-color: #ebe7e0;
+}
+
+.userClass{
+  padding: 20px;
+  background-color: #6ca0bb;
+  border-radius: 3px;
+}
+
+.linkto a{
+  text-decoration: none;
+  color: black;
+}
+.linkto a:hover{
+  text-decoration: none;
+}
 a {
   cursor: pointer;
 }
@@ -19,8 +37,17 @@ a {
   margin-top: 20px;
 }
 
+h3 .prodMan{
+  background-color: #766988;
+}
+
+h3 .custRep {
+  background-color: #4b827a
+}
+
 .postBox{
-  border: 2px solid black;
+  background-color: #e0cfad;
+  border-radius: 5px;
   padding: 10px;
 }
 .newPost{
