@@ -18,6 +18,9 @@ class GraphsController < ApplicationController
     graph = Graph.find(params[:id])
     params[:tags].each do |tag|
       graph.tags << Tag.find(tag['id'])
+      Tag.find(tag['id']).tickets.each do |ticket|
+        Post.find(graph.post_id).tickets << ticket
+      end
     end
 
     respond_to do |f|

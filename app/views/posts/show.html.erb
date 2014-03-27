@@ -31,7 +31,16 @@
     </tab>
 
           <tab heading="Graphs">
-          <h1> {{single_post.graph.name}} </h1>
+          <h1> {{graph.name}} </h1>
+
+          <select ng-model='chartType'>
+            <option value="pie">pie</option>
+            <option value="bar">bar</option>
+            <option value="line">line</option>
+            <option value="point">point</option>
+            <option value="area">area</option>
+          </select>
+          <div ac-chart="chartType" ac-data="data" ac-config="config1" class='chart'></div>
               
           </tab>
 

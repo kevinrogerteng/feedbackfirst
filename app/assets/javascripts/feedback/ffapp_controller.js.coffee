@@ -17,21 +17,21 @@ ffAppCtrl.controller("ffAppCtrl", ["$scope", "Api", "$location", "AuthService"
 ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api", "AuthService"
   ($scope, $routeParams, Api, AuthService) ->
 
+    tagData = []
+
     Api.PostDetail.query({"id":$routeParams.id}, (data)->
         $scope.post = data
-
+        angular.forEach($scope.post, (post)->
+          $scope.graph = post.graph
+          tags = post.graph.tags
+          angular.forEach(tags, (tag)->
+            tagData.push({"x": tag.name, "y":[tag.tickets.length]})
+            )
+          )
       )
-    $scope.message = "hello"
-
-    $scope.updatePost = (post) ->
-      Api.PostDetail.update("id": post.id, post)
-
-    $scope.checkOwner = (post) ->
-      $scope.currentUser = AuthService.getCurrentUser()
-      if post.user_id is $scope.currentUser.id
-        return true
-      else
-        return false
+    $scope.data = {
+          data : tagData
+        }
 
     $scope.chartType = 'pie';
 
@@ -43,6 +43,16 @@ ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api", "AuthSe
         position:'right'
       }
     }
+
+    $scope.updatePost = (post) ->
+      Api.PostDetail.update("id": post.id, post)
+
+    $scope.checkOwner = (post) ->
+      $scope.currentUser = AuthService.getCurrentUser()
+      if post.user_id is $scope.currentUser.id
+        return true
+      else
+        return false
 ])
 
 ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService", "$http"
@@ -73,7 +83,7 @@ ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService", "$
           name:$scope.graph.title
           post_id: data.id
         }
-        Api.newGraph.save(graph, (data)->
+        Api.Graph.save(graph, (data)->
           tagsChose = []
           angular.forEach($scope.tagsChosen, (checked, id)->
             if checked

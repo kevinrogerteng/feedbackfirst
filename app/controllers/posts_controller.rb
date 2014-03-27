@@ -36,7 +36,7 @@ class PostsController < ApplicationController
     
     respond_to do |f|
         f.html  {render :layout => false }
-        f.json  {render :json => post.as_json(:include => [:graph, :tickets => {:include => [:tags => {:only => :name}]}])}
+        f.json  {render :json => post.as_json(:include => [:tickets, :graph => {:include => [:tags => {only: :name, :include => :tickets}]}])}
     end
   end
 
