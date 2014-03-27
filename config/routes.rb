@@ -6,7 +6,7 @@ Feedbackfirst::Application.routes.draw do
   get "categories/index"
   resources :posts 
   resources :sessions
-  resources :graphs, only:[:index, :create]
+  resources :graphs, only:[:index, :create, :update, :show]
   resources :categories, only:[:index]
   resources :tags, only:[:index]
   resources :tickets, only:[:index]

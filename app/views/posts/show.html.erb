@@ -2,6 +2,7 @@
   <span ng-hide="editing"><h2>{{single_post.title}}</h2></span>
   <tabset>
     <tab heading="Description">
+
       <div ng-hide="editing"class="postDescription">
         {{single_post.description}}
       </div>
@@ -9,6 +10,7 @@
 
       <div class="postDescription">
         <form ng-show="editing" ng-submit="editing = false; updatePost(single_post)">
+
           <div class="form-group">
             <label >Title</label>
             <input type="text" class="form-control" ng-model="single_post.title"required>
@@ -28,27 +30,11 @@
 
     </tab>
 
-    <tab heading="Graphs">
-    <h1> Graphs Should go here! </h1>
-    <div class="row">
-         <!--  <div class="charts col-md-6">
-          </div> -->
-          <form role="form" class="col-md-6" ng-submit="submitGraph()">
-              <div class="form-group">
-                <label >{{graph.title}} </label>
-                <input type="text" class="form-control" ng-model="graph.title" >
-              </div>
-              <!-- <div class="form-group">
-                <label ng-repeat='tag in tags'>
-                <input type="checkbox" value="{{tag.name}}" id="{{tag.id}}" 
-                  ng-model="tagsChosen[tag.id]" /> 
-                  {{tag.name}}
-              </label> -->
-              <!-- </div> -->
-              <button class="btn btn-primary" type="submit">Save</button>
-          </form>
-    </div>
-    </tab>
+          <tab heading="Graphs">
+          <h1> {{single_post.graph.name}} </h1>
+              
+          </tab>
+
     <tab heading="Tickets" active="tab.active" disabled="tab.disabled" >
       <table class="table table-striped">
         <tr>

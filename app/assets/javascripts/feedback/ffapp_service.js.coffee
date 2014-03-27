@@ -5,6 +5,7 @@ ffAppService.factory "Api", ($resource) ->
     Categories: $resource("/categories.json")
     Tags: $resource("/tags.json")
     newGraph: $resource("/graphs.json")
+    GraphDetails: $resource("/graphs/:id.json", {id:@id}, {'update': {method: 'PATCH'}})
     PostDetail: $resource("/posts/:id.json", {id: @id}, {'update': {method: 'PATCH'}})
     UserPostDetail: $resource("/users/:id.json", {id: @id}, {'update': {method: 'PATCH'}})
     Tickets: $resource("/tickets.json", {id: @id}, {'update': {method: 'PATCH'}})

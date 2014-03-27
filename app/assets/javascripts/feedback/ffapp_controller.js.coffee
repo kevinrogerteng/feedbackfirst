@@ -19,7 +19,9 @@ ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api", "AuthSe
 
     Api.PostDetail.query({"id":$routeParams.id}, (data)->
         $scope.post = data
+
       )
+    $scope.message = "hello"
 
     $scope.updatePost = (post) ->
       Api.PostDetail.update("id": post.id, post)
@@ -31,33 +33,27 @@ ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api", "AuthSe
       else
         return false
 
+    $scope.chartType = 'pie';
+
+    $scope.config1 = {
+      labels: false,
+      title : "Products",
+      legend : {
+        display:true,
+        position:'right'
+      }
+    }
+])
+
+ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService", "$http"
+  ($scope, Api, $location, AuthService, $http) ->
+
     Api.Tags.query((data)->
       $scope.tags = data
       )
 
     $scope.tagsChosen = {}
 
-    $scope.submitGraph = () ->
-
-      console.log("this works!")
-      console.log($scope.graph.title)
-
-      tagsChose = []
-      angular.forEach($scope.tagsChosen, (checked, id)->
-        if checked
-          tagsChose.push($scope.tags[id])
-        )
-      console.log($scope.tagsChosen)
-        # graph = {
-        #   name: $scope.graph.name
-        #   tags: tagsChose
-        #   post_id: $routeParams.id
-        # }
-        # Api.newGraph.save(graph)
-])
-
-ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService"
-  ($scope, Api, $location, AuthService) ->
     $scope.submitPost = ()->
       user = AuthService.getCurrentUser()
       post = {
@@ -65,9 +61,36 @@ ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService"
         description: $scope.post.description
         user_id: user.id
       }
-      Api.Posts.save(post)
-      $location.path("/users/" + user.id + "/posts")
+
+      graph = {
+          name: $scope.graph.title
+        }
+
+
+
+      Api.Posts.save(post, (data)->
+        graph = {
+          name:$scope.graph.title
+          post_id: data.id
+        }
+        Api.newGraph.save(graph, (data)->
+          tagsChose = []
+          angular.forEach($scope.tagsChosen, (checked, id)->
+            if checked
+              tagsChose.push($scope.tags[id])
+            )
+          $http.put("/graphs/" + data.id + ".json", tags: tagsChose)
+          )
+          # Api.GraphDetails.update("id": data.id, "tags": tags)
+        ) 
+      # $location.path("/users/" + user.id + "/posts")
+
   ])
+
+
+
+
+
 
 ffAppCtrl.controller("userPosts", ['$scope', 'Api', '$routeParams'
   ($scope, Api, $routeParams) ->

@@ -8,12 +8,29 @@ class GraphsController < ApplicationController
 
   def create
     new_graph = Graph.create(graph_params)
-    tags.params.each do |x|
-      new_graph.tags << x
-    end
     respond_to do |f|
         f.html {render :layout => false}
         f.json {render :json => new_graph }
+    end
+  end
+
+  def update
+    graph = Graph.find(params[:id])
+    params[:tags].each do |tag|
+      graph.tags << Tag.find(tag['id'])
+    end
+
+    respond_to do |f|
+        f.html {render :layout => false}
+        f.json {render :json => graph}
+    end
+  end
+
+  def show
+    graph = Graph.find(params[:id])
+    respond_to do |f|
+        f.html {render :layout => false}
+        f.json {render :json => graph.as_json(:include => [:tags => {:only => :name}])}
     end
   end
 
@@ -21,10 +38,6 @@ class GraphsController < ApplicationController
 
   def graph_params
     params.require(:graph).permit(:name, :post_id)
-  end
-
-  def tags_params
-    params.require(:graph).permit(:tags)
   end
 
 end

@@ -32,11 +32,11 @@ class PostsController < ApplicationController
   end
 
   def show
-    post = Post.where(id: params[:id]).includes(:graphs, tickets: [:tags])
+    post = Post.where(id: params[:id]).includes(graph: [:tags], tickets: [:tags])
     
     respond_to do |f|
         f.html  {render :layout => false }
-        f.json  {render :json => post.as_json(:include => [:graphs, :tickets => {:include => [:tags => {:only => :name}]}])}
+        f.json  {render :json => post.as_json(:include => [:graph, :tickets => {:include => [:tags => {:only => :name}]}])}
     end
   end
 
@@ -46,6 +46,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :user_id)
+    params.require(:post).permit(:title, :description, :user_id, :graphs => [:id, :name])
   end
+
 end
