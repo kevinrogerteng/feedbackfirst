@@ -7,4 +7,8 @@ navBar.controller("navBarCtrl", ['$scope', 'AuthService', '$rootScope'
       # return true
       $scope.user = AuthService.getCurrentUser()
       return AuthService.getUserAuthenticated()
+
+    $scope.signOut = () ->
+      AuthService.setUserAuthenticated(false, {})
+      console.log("hello?")
 ])
