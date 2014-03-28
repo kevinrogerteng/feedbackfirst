@@ -60,8 +60,13 @@ ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api", "AuthSe
     $scope.updateGraph = (graph) ->
       newGraph = {
         name: graph.name
+        post_id: graph.post_id
       }
       Api.GraphDetail.update("id": graph.id, newGraph)
+
+    $scope.createNew = (graph) ->
+      console.log("work!")
+      console.log(graph)
       
 ])
 

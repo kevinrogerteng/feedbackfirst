@@ -6,6 +6,13 @@ class GraphsController < ApplicationController
     end
   end
 
+  def new
+    respond_to do |f|
+        f.html {render :layout => false}
+        f.json {render :json }
+    end
+  end
+
   def create
     new_graph = Graph.create(graph_params)
     respond_to do |f|
@@ -17,7 +24,6 @@ class GraphsController < ApplicationController
   def update
     graph = Graph.find(params[:id])
     graph.update_attributes(graph_params)
-    binding.pry
     if params[:tags] != nil
       params[:tags].each do |tag|
         graph.tags << Tag.find(tag['id'])

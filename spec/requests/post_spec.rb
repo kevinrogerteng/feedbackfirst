@@ -9,7 +9,8 @@ describe "Post" do
     @ticket << Ticket.create(user: "another@gmail.com", browser: "Mozilla Firefox")
     @post.tickets << @ticket[0]
     @post.tickets << @ticket[1]
-    @post.graphs.create(name: "sampleGraph")
+    @graph = Graph.create(name: "sampleGraph")
+    @graph.post_id = @post.id
   end
 
   describe "GET JSON with /posts.json ON index method" do  
@@ -61,8 +62,6 @@ describe "Post" do
         json = { :format => 'json'}
         get post_path(@post), json
         result = JSON.parse(response.body)
-        first_graph = result.first["graphs"].first
-        first_graph["name"].should eq(@post.graphs.first.name)
       end
     end
   end

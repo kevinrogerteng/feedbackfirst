@@ -22,18 +22,17 @@
         <div class="postBox">
 
         <div class="progress progress-striped active">
-          <div class="progress-bar"  role="progressbar" aria-valuenow={{post.tickets.length}} aria-valuemin="0" aria-valuemax={{max}} style="width: {{post.tickets.length}}%">
+          <div class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow={{post.tickets.length}} aria-valuemin="0" aria-valuemax={{max}} style="width: {{post.tickets.length}}%">
           {{post.tickets.length}}/{{max}}
           </div>
         </div>
-              <h2><a href="#/posts/{{post.id}}">{{post.title}}</a></h2>
+              <h2 class="linkto buzz-out"><a href="#/posts/{{post.id}}">{{post.title}}</a></h2><br>
               <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">View Description</button>
               <hr>
               <div collapse="isCollapsed">
                 <div class="well well-lg">{{post.description}}</div> 
               </div>
-              <h3>by: {{post.user.name}}</h3>
-              <div class=""></div>
+              <h3 class="{{post.user.department_code}}">by: {{post.user.name}}</h3>
 
         </div>
       </div>
