@@ -16,10 +16,14 @@ class GraphsController < ApplicationController
 
   def update
     graph = Graph.find(params[:id])
-    params[:tags].each do |tag|
-      graph.tags << Tag.find(tag['id'])
-      Tag.find(tag['id']).tickets.each do |ticket|
-        Post.find(graph.post_id).tickets << ticket
+    graph.update_attributes(graph_params)
+    binding.pry
+    if params[:tags] != nil
+      params[:tags].each do |tag|
+        graph.tags << Tag.find(tag['id'])
+        Tag.find(tag['id']).tickets.each do |ticket|
+          Post.find(graph.post_id).tickets << ticket
+        end
       end
     end
 
@@ -35,6 +39,9 @@ class GraphsController < ApplicationController
         f.html {render :layout => false}
         f.json {render :json => graph.as_json(:include => [:tags => {:only => :name}])}
     end
+  end
+
+  def delete
   end
 
   private

@@ -47,6 +47,14 @@
               <label >Title</label>
               <input type="text" class="form-control" ng-model="graph.name"required>
             </div>
+
+            <label> Tags </label><br>
+              <label>Search tags: <input ng-model="searchTags.name"/></label><br>
+                <label ng-repeat='tag in tags| filter:searchTags:strict' class="tagCheckBox"><div ng-show="showTags">
+                  <input type="checkbox" value="{{tag.name}}" id="{{tag.id}}"
+              ng-model="{{tagsChosen[tag.id]}}" /> 
+                {{tag.name}}</div>
+            </label>
             <button class="btn btn-primary" type="submit">Save</button>
             <button class="btn btn-default" type="button" ng-click="editingGraph = !editingGraph">Cancel</button>
 
