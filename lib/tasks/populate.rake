@@ -30,9 +30,6 @@ namespace :db do
       end
     end
     posts.each do |post|
-      rand(100).times do |y|
-        post.tickets << seed_tickets.sample
-      end
       users.sample.posts << post
       Graph.create(name: :sample, post_id: post.id)
     end
