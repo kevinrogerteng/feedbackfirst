@@ -41,6 +41,12 @@ namespace :db do
       rand(5).times do |y|
         post.graph.tags << tags.sample
       end
+
+      post.graph.tags.each do |tag|
+        tag.tickets.each do |ticket|
+          post.tickets << ticket
+        end
+      end
     end
   end
 
