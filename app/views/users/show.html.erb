@@ -1,15 +1,23 @@
 <div class="row">
-    <div class="filterPosts col-md-10">
-      Some filter stuff here
+    <div class="col-md-10">
+        <h4>Filter By:
+        <select class="btn btn-success btn-lg" ng-model="sortPosts">
+          <option value="postTitle">Title</option>
+          <option value="-tickets">Tickets</option>
+          <option value="published">Drafts</option>
+        </select>
+        <h4>Search by Title: <input ng-model="searchPost.title"/></h4>
     </div>
-    
+
     <div class="totaltickets col-md-2">
-      <h1>{{tickets.length}}</h1>
+      <h3 class="dateToday"> Tickets as of {{
+        dateToday}} </h3>
+      <h1 class="ticketLength">{{tickets.length}}</h1>
     </div>
 </div> <!--this closes totaltickets-->
 
 <div class="row">
-    <div ng-repeat="post in userPosts">
+    <div ng-repeat="post in userPosts| filter:searchPost:strict | orderBy:sortPosts">
       <div class="post col-md-6">
         <div class="postBox">
 

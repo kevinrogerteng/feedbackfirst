@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe "Post" do
   before(:each) do
-    @user = User.create(name: "User", email: "sample@gmail.com")
-    @post = @user.posts.create(title: "Sample", description: "this is a description")
+    @user = User.create(name: "User", email: "sample@gmail.com", password: "123456", password_confirmation:"123456")
+    @post = Post.create(title: "Sample", description: "this is a description", user_id: @user.id)
     @ticket = []
     @ticket << Ticket.create(user: "user@gmail.com", browser: "Google Chrome")
     @ticket << Ticket.create(user: "another@gmail.com", browser: "Mozilla Firefox")
@@ -70,7 +70,7 @@ describe "Post" do
   describe 'POST JSON with /posts.json on create method' do
     context 'Given a post with params' do
       it 'should be successful' do
-        post posts_path post: {title: "anotherSample", description: "lalala"}
+        post posts_path post: {title: "anotherSample", description: "lalala", user_id: 1}
         response.status.should == 302
       end
     end

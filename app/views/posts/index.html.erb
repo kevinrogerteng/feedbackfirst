@@ -1,31 +1,37 @@
 <div class="row">
-    <div class="filterPosts col-md-10">
-      Some filter stuff here
+    <div class="col-md-10">
+        <h4>Filter By:
+        <select class="btn btn-success btn-lg" ng-model="sortPosts">
+          <option value="postTitle">Title</option>
+          <option value="-tickets">Tickets</option>
+        </select>
+        <h4>Search by Publisher: <input ng-model="searchPost.user"/></h4>
     </div>
 
     <div class="totaltickets col-md-2">
-      <h1>{{tickets.length}}</h1>
+      <h3 class="dateToday"> Tickets as of {{
+        dateToday}} </h3>
+      <h1 class="ticketLength">{{tickets.length}}</h1>
     </div>
 </div> <!--this closes totaltickets-->
 
 <div class="row">
-    <div ng-repeat="post in posts">
+    <div ng-repeat="post in posts| filter:searchPost:strict | orderBy:sortPosts">
       <div class="post col-md-6">
         <div class="postBox">
 
         <div class="progress progress-striped active">
-          <div class="progress-bar"  role="progressbar" aria-valuenow={{post.tickets.length}} aria-valuemin="0" aria-valuemax={{max}} style="width: {{post.tickets.length}}%">
+          <div class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow={{post.tickets.length}} aria-valuemin="0" aria-valuemax={{max}} style="width: {{post.tickets.length}}%">
           {{post.tickets.length}}/{{max}}
           </div>
         </div>
-              <h2><a href="#/posts/{{post.id}}">{{post.title}}</a></h2>
+              <h2 class="linkto buzz-out"><a href="#/posts/{{post.id}}">{{post.title}}</a></h2><br>
               <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">View Description</button>
               <hr>
               <div collapse="isCollapsed">
                 <div class="well well-lg">{{post.description}}</div> 
               </div>
-              <h3>by: {{post.user.name}}</h3>
-              <div class=""></div>
+              <h3 class="{{post.user.department_code}}">by: {{post.user.name}}</h3>
 
         </div>
       </div>

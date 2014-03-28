@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     posts = Post.where(user_id: params[:id]).includes(:tickets, :user)
     respond_to do |f|
         f.html {render :layout => false}
-        f.json {render :json => posts.as_json(:include=> [:tickets, :graphs, :user])}
+        f.json {render :json => posts.as_json(:include=> [:tickets, :graph, :user])}
     end
   end
 

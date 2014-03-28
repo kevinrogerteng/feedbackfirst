@@ -5,7 +5,8 @@ ffApp = angular.module("ffApp", [
   "ui.bootstrap",
   "logIn",
   "auth",
-  "navBar"
+  "navBar",
+  "angularCharts"
   ])
 
 ffApp.config(["$httpProvider",($httpProvider)->

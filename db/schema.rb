@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325171837) do
+ActiveRecord::Schema.define(version: 20140328005526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20140325171837) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "graph_tags", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "graph_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "graph_tags", ["graph_id"], name: "index_graph_tags_on_graph_id", using: :btree
+  add_index "graph_tags", ["tag_id"], name: "index_graph_tags_on_tag_id", using: :btree
 
   create_table "graphs", force: true do |t|
     t.string   "name"
@@ -47,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140325171837) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_publish",  default: false
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
@@ -97,6 +108,7 @@ ActiveRecord::Schema.define(version: 20140325171837) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
+    t.string   "department_code"
   end
 
 end

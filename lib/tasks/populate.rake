@@ -12,15 +12,15 @@ namespace :db do
   users = User.all
 
 
-    Ticket.populate 100 do |ticket|
-      ticket.name = Faker::Name.name
-      ticket.user = Faker::Internet.safe_email
-      ticket.content = Faker::Lorem.paragraph(2)
-      ticket.browser = ["Mozilla", "Google Chrome", "Internet Explorer", "Opera"]
-      ticket.category_id = categories.sample.id
-      subcategories = Category.find(ticket.category_id).subcategories
-      ticket.subcategory_id = subcategories.sample.id
-    end
+  Ticket.populate 100 do |ticket|
+    ticket.name = Faker::Name.name
+    ticket.user = Faker::Internet.safe_email
+    ticket.content = Faker::Lorem.paragraph(2)
+    ticket.browser = ["Mozilla", "Google Chrome", "Internet Explorer", "Opera"]
+    ticket.category_id = categories.sample.id
+    subcategories = Category.find(ticket.category_id).subcategories
+    ticket.subcategory_id = subcategories.sample.id
+  end
 
   seed_tickets = Ticket.all
 
@@ -34,6 +34,13 @@ namespace :db do
         post.tickets << seed_tickets.sample
       end
       users.sample.posts << post
+      Graph.create(name: :sample, post_id: post.id)
+    end
+
+    posts.each do |post|
+      rand(5).times do |y|
+        post.graph.tags << tags.sample
+      end
     end
   end
 
@@ -52,6 +59,7 @@ def make_user
   User.populate 5 do |user|
     user.name = Faker::Name.name
     user.email = Faker::Internet.safe_email
+    user.department_code = ['custRep', 'prodMan']
   end
 end
 
@@ -114,6 +122,8 @@ def make_tags
   tags = []
 
   tags << Tag.create(name: "angry")
+  tags << Tag.create(name: "happy")
+  tags << Tag.create(name: "accounts")
   tags << Tag.create(name: "UI")
   tags << Tag.create(name: "sign_in")
   tags << Tag.create(name: "password")
@@ -126,6 +136,7 @@ def make_tags
   tags << Tag.create(name: "cart_edit")
   tags << Tag.create(name: "cart_delete")
   tags << Tag.create(name: "payment_processor")
+  tags << Tag.create(name: "bad_payments")
   tags << Tag.create(name: "suggestion")
   tags << Tag.create(name: "shipment")
   tags << Tag.create(name: "wrong_item_shipment")
