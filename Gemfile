@@ -30,12 +30,14 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 gem "sugar-rails"
+gem 'faker', '~> 1.3.0'
+gem 'populator', '~> 1.0.0'
 
-group :development do
-  gem 'faker', '~> 1.3.0'
-  # gem 'quiet_assets'
-  gem 'populator', '~> 1.0.0'
-end
+# group :development do
+  
+#   # gem 'quiet_assets'
+  
+# end
 
 group :test, :development do
   gem 'shoulda-matchers', '~> 2.5.0'
