@@ -12,6 +12,10 @@ ffAppCtrl.controller("ffAppCtrl", ["$scope", "Api", "$location", "AuthService"
       )
     $scope.isCollapsed = true
 
+    dateSinceTime = Date.now()
+
+    $scope.dateToday = Date.create(dateSinceTime).format("{MM}/{dd}/{yy}")
+
   ])
 
 ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api", "AuthService"
@@ -23,6 +27,7 @@ ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api", "AuthSe
         $scope.post = data
         angular.forEach($scope.post, (post)->
           $scope.graph = post.graph
+          console.log($scope.graph)
           tags = post.graph.tags
           angular.forEach(tags, (tag)->
             tagData.push({"x": tag.name, "y":[tag.tickets.length]})
@@ -52,6 +57,13 @@ ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api", "AuthSe
         return true
       else
         return false
+
+    $scope.updateGraph = (graph) ->
+      newGraph = {
+        name: graph.name
+        post_id: graph.post_id
+      }
+      
 ])
 
 ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService", "$http"
@@ -59,6 +71,10 @@ ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService", "$
 
     Api.Tags.query((data)->
       $scope.tags = data
+      )
+
+    Api.Categories.query((data)->
+      $scope.categories = data
       )
 
     $scope.tagsChosen = {}
@@ -74,9 +90,6 @@ ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService", "$
       graph = {
           name: $scope.graph.title
         }
-
-
-
       Api.Posts.save(post, (data)->
         graph = {
           name:$scope.graph.title
@@ -90,16 +103,10 @@ ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService", "$
             )
           $http.put("/graphs/" + data.id + ".json", tags: tagsChose)
           )
-          # Api.GraphDetails.update("id": data.id, "tags": tags)
         ) 
-      # $location.path("/users/" + user.id + "/posts")
+      $location.path("/users/" + user.id + "/posts")
 
   ])
-
-
-
-
-
 
 ffAppCtrl.controller("userPosts", ['$scope', 'Api', '$routeParams'
   ($scope, Api, $routeParams) ->
@@ -112,5 +119,15 @@ ffAppCtrl.controller("userPosts", ['$scope', 'Api', '$routeParams'
         $scope.max = $scope.tickets.length
       )
     $scope.isCollapsed = true
+
+  ])
+
+
+ffAppCtrl.controller("graphEdit", ["$scope", "Api", '$routeParams'
+  ($scope, Api, $routeParams) ->
+    Api.GraphDetail.query({"id": $routeParams.id}, (data)->
+        $scope.graph = data
+      )
+
 
   ])

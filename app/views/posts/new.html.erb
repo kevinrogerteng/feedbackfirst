@@ -1,32 +1,33 @@
 <h1> New Post </h1>
   <div class="form-group">
-    <p class="help-block">Your can edit, add graphs and publish your posts by clicking on "My Posts" on your nav bar. Your new posts are saved as draft by default. </p>
+    <p class="help-block">Your can edit and publish your posts by clicking on "My Posts" on your nav bar. Your new posts are saved as draft by default. </p>
   </div>
 
 <form role="form" ng-submit="submitPost()">
-  <div class="form-group">
-    <label >Title</label>
-    <input type="text" class="form-control" placeholder="Enter a title" ng-model="post.title" required>
-  </div>
-  <div class="form-group">
-    <label>Description</label>
-    <textarea class="form-control" rows="3" placeholder="Enter a description" ng-model="post.description"></textarea>
-  </div>
 
-  <div class="form-group">
-          <label >Graph Title</label>
-            <input type="text" class="form-control" placeholder="Enter a graph name" ng-model="graph.title" required>
-        </div>
+      <div class="form-group">
+        <label >Title</label>
+        <input type="text" class="form-control" placeholder="Enter a title" ng-model="post.title" required>
+      </div>
 
-        <div class="form-group">
-        <label> Tags </label>
-          <label ng-repeat='tag in tags'>
-            <input type="checkbox" value="{{tag.name}}" id="{{tag.id}}" 
-              ng-model="tagsChosen[tag.id]" /> 
-              {{tag.name}}
-          </label>
-        </div>
-  </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" rows="3" placeholder="Enter a description" ng-model="post.description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label >Graph Title</label>
+          <input type="text" class="form-control" placeholder="Enter a graph name" ng-model="graph.title" required>
+      </div>
+
+      <label> Tags </label><br>
+      <label>Search tags: <input ng-model="searchTags.name"/></label><br>
+        <label ng-repeat='tag in tags| filter:searchTags:strict' class="tagCheckBox"><div ng-show="showTags">
+          <input type="checkbox" value="{{tag.name}}" id="{{tag.id}}"
+            ng-model="{{tagsChosen[tag.id]}}" /> 
+              {{tag.name}}</div>
+        </label>
+      </div><br>
 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

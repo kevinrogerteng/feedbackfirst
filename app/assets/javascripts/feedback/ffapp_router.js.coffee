@@ -21,6 +21,9 @@ ffAppRouter.config(["$routeProvider",
       templateUrl: "/users/show"
       controller: "userPosts"
     )
-    
+    .when("graphs/:id/edit"
+      templateUrl: "/graphs/edit"
+      controller: "graphEdit"
+    )
   ])
 

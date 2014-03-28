@@ -37,12 +37,17 @@ a {
   margin-top: 20px;
 }
 
-h3 .prodMan{
-  background-color: #766988;
+.prodMan{
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgba(111, 95, 255, 0.8);
 }
 
-h3 .custRep {
-  background-color: #4b827a
+.custRep {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgba(35, 80, 33, 0.8);
+  color:white;
 }
 
 .postBox{

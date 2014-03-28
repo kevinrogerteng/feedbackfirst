@@ -9,7 +9,9 @@
     </div>
 
     <div class="totaltickets col-md-2">
-      <h1>{{tickets.length}}</h1>
+      <h3 class="dateToday"> Tickets as of {{
+        dateToday}} </h3>
+      <h1 class="ticketLength">{{tickets.length}}</h1>
     </div>
 </div> <!--this closes totaltickets-->
 
@@ -29,7 +31,7 @@
               <div collapse="isCollapsed">
                 <div class="well well-lg">{{post.description}}</div> 
               </div>
-              <h3 class="{{post.user.position}}">by: {{post.user.name}}</h3>
+              <h3 class="{{post.user.department_code}}">by: {{post.user.name}}</h3>
 
         </div>
       </div>
