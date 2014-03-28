@@ -121,13 +121,3 @@ ffAppCtrl.controller("userPosts", ['$scope', 'Api', '$routeParams'
     $scope.isCollapsed = true
 
   ])
-
-
-ffAppCtrl.controller("graphEdit", ["$scope", "Api", '$routeParams'
-  ($scope, Api, $routeParams) ->
-    Api.GraphDetail.query({"id": $routeParams.id}, (data)->
-        $scope.graph = data
-      )
-
-
-  ])

@@ -14,17 +14,6 @@ class GraphsController < ApplicationController
     end
   end
 
-  def edit
-    
-    graph = Graph.find(params[:id])
-
-    respond_to do |f|
-        f.html {render :layout => false}
-        f.json {render :json => graph }
-    end
-
-  end
-
   def update
     graph = Graph.find(params[:id])
     params[:tags].each do |tag|
