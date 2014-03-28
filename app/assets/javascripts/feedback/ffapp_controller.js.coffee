@@ -27,7 +27,6 @@ ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api", "AuthSe
         $scope.post = data
         angular.forEach($scope.post, (post)->
           $scope.graph = post.graph
-          console.log($scope.graph)
           tags = post.graph.tags
           angular.forEach(tags, (tag)->
             tagData.push({"x": tag.name, "y":[tag.tickets.length]})

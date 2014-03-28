@@ -9,7 +9,7 @@
 
 
       <div class="postDescription">
-        <form ng-show="editing" ng-submit="editing = false; updatePost(single_post)">
+        <form ng-show="editing" ng-submit="editing = !editing; updatePost(single_post)">
 
           <div class="form-group">
             <label >Title</label>
@@ -22,7 +22,9 @@
           </div>
 
           <button class="btn btn-primary" type="submit">Save</button>
+          <button class="btn btn-default" type="button" ng-click="editing = false">Cancel</button>
         </form>
+
 
       </div>
 
@@ -30,13 +32,30 @@
 
     </tab>
 
-          <tab heading="Graphs">
-          <h1> {{graph.name}} </h1>
-          <div ac-chart="chartType" ac-data="data" ac-config="config1" class='chart'></div>
+    <tab heading="Graphs">
+        <div class="row">
+          <div class=" col-md-6">
+            <h1> {{graph.name}} </h1>
+            <div ac-chart="chartType" ac-data="data" ac-config="config1" class='chart'></div><br>
+          </div>
 
-          <span ng-show="checkOwner(single_post)"><a href="#/graphs/{{graph.id}}/edit" class="btn btn-default" ng-hide="editing" ng-click="editing = true">Edit</a></span>
-              
-          </tab>
+          <div class=" col-md-6">
+
+          <form ng-show="editingGraph" ng-submit="editingGraph = !editingGraph; updateGraph(graph)">
+
+            <div class="form-group">
+              <label >Title</label>
+              <input type="text" class="form-control" ng-model="graph.name"required>
+            </div>
+            <button class="btn btn-primary" type="submit">Save</button>
+            <button class="btn btn-default" type="button" ng-click="editingGraph = !editingGraph">Cancel</button>
+
+          </form>
+
+          <span ng-show="checkOwner(single_post)"><button class="btn btn-default" ng-hide="editingGraph" ng-click="editingGraph = true">Edit</button></span>
+          </div>
+        </div>     
+    </tab>
 
     <tab heading="Tickets" active="tab.active" disabled="tab.disabled" >
       <table class="table table-striped">
