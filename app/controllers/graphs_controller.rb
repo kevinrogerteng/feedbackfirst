@@ -23,7 +23,6 @@ class GraphsController < ApplicationController
 
   def update
     graph = Graph.find(params[:id])
-    graph.update_attributes(graph_params)
     if params[:tags] != nil
       params[:tags].each do |tag|
         graph.tags << Tag.find(tag['id'])

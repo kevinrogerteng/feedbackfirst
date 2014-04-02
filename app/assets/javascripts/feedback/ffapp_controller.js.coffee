@@ -65,8 +65,7 @@ ffAppCtrl.controller("postShowDetail", ["$scope", "$routeParams", "Api", "AuthSe
       Api.GraphDetail.update("id": graph.id, newGraph)
 
     $scope.createNew = (graph) ->
-      console.log("work!")
-      console.log(graph)
+      # graph creation goes here
       
 ])
 
@@ -101,6 +100,7 @@ ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService", "$
         }
         Api.Graph.save(graph, (data)->
           tagsChose = []
+          console.log(tagsChose)
           angular.forEach($scope.tagsChosen, (checked, id)->
             if checked
               tagsChose.push($scope.tags[id])
