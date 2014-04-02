@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Feedbackfirst::Application.config.secret_key_base = 'ca327c8dcbd5c8df5e752bda6a84b337c3acaf7c34d7ca2a41026b2cb690694a002d0b74f9042321ac521cd473c08ea1dbac1d427d193448674dc219091978ae'
+Feedbackfirst::Application.config.secret_key_base = ENV['SECRET_KEY_BASE']
