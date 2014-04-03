@@ -1,5 +1,5 @@
 #Feedback First#
-###hhtp://feedbackfirst-app.herokuapp.com###
+###http://feedbackfirst-app.herokuapp.com###
 
 
 ##Description##
