@@ -14,6 +14,8 @@ This application is intended for internal use and built as an API for existing c
 - Ruby on Rails
 - Coffeescript
 - Angular JS
+- HTML
+- CSS3
 
 ##Developer's Note##
 
