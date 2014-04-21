@@ -1,4 +1,5 @@
 <div ng-repeat= "single_post in post">
+  <h2><span class="ticketCount">{{single_post.tickets.length}}</span></h2>
   <span ng-hide="editing"><h2>{{single_post.title}}</h2></span>
   <tabset>
     <tab heading="Description">

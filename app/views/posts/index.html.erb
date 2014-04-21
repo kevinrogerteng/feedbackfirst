@@ -18,6 +18,7 @@
 <div class="row">
       <div class="post col-md-6" ng-repeat="post in posts| filter:searchPost:strict | orderBy:sortPosts">
         <div class="postBox">
+              <h2><span class="ticketCount">{{post.tickets.length}}</span></h2>
               <h2 class="linkto"><a href="#/posts/{{post.id}}">{{post.title}}</a></h2><br>
               <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">View Description</button>
               <hr>
