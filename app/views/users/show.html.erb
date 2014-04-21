@@ -17,16 +17,10 @@
 </div> <!--this closes totaltickets-->
 
 <div class="row">
-    <div ng-repeat="post in userPosts| filter:searchPost:strict | orderBy:sortPosts">
-      <div class="post col-md-6">
+      <div class="post col-md-6" ng-repeat="post in userPosts| filter:searchPost:strict | orderBy:sortPosts">
         <div class="postBox">
 
-        <div class="progress progress-striped active">
-          <div class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow={{post.tickets.length}} aria-valuemin="0" aria-valuemax={{max}} style="width: {{post.tickets.length}}%">
-          {{post.tickets.length}}/{{max}}
-          </div>
-        </div>
-              <h2 class="linkto buzz-out"><a href="#/posts/{{post.id}}">{{post.title}}</a></h2><br>
+              <h2 class="linkto"><a href="#/posts/{{post.id}}">{{post.title}}</a></h2><br>
               <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">View Description</button>
               <hr>
               <div collapse="isCollapsed">
@@ -36,7 +30,6 @@
 
         </div>
       </div>
-    </div>
 </div> <!--this closes the class row for posts-->
 
 
