@@ -20,6 +20,7 @@ body{
   text-decoration: none;
   color: black;
 }
+
 .linkto a:hover{
   text-decoration: none;
 }
@@ -87,4 +88,11 @@ a {
   background-color: #ffffff;
   border: 1px solid #dddddd;
   border-bottom-color: transparent;
+}
+
+.ticketCount{
+  background: #fff;
+  float: right;
+  padding: 5px;
+  border-radius: 3px;
 }

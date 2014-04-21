@@ -14,7 +14,22 @@ class GraphsController < ApplicationController
   end
 
   def create
+    
     new_graph = Graph.create(graph_params)
+    ticket_array = []
+
+    if params[:tags] != nil
+      params[:tags].each do |tag|
+        new_graph.tags << Tag.find(tag['id'])
+        Tag.find(tag['id']).tickets.each do |ticket|
+          if ticket_array.include?(ticket.id) == false
+            Post.find(new_graph.post_id).tickets << ticket
+            ticket_array.push ticket.id
+          end
+        end
+      end
+    end
+
     respond_to do |f|
         f.html {render :layout => false}
         f.json {render :json => new_graph }
@@ -23,14 +38,7 @@ class GraphsController < ApplicationController
 
   def update
     graph = Graph.find(params[:id])
-    if params[:tags] != nil
-      params[:tags].each do |tag|
-        graph.tags << Tag.find(tag['id'])
-        Tag.find(tag['id']).tickets.each do |ticket|
-          Post.find(graph.post_id).tickets << ticket
-        end
-      end
-    end
+    graph.update_attributes(graph_params)
 
     respond_to do |f|
         f.html {render :layout => false}

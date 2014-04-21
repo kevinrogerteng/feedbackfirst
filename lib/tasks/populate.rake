@@ -4,11 +4,11 @@ namespace :db do
 
   make_categories
   make_tags
-  make_posts
-  make_user
+  # make_posts
+  # make_user
   categories = Category.all
   tags = Tag.all
-  posts = Post.all
+  # posts = Post.all
   users = User.all
 
 
@@ -29,22 +29,22 @@ namespace :db do
         ticket.tags << tags.sample
       end
     end
-    posts.each do |post|
-      users.sample.posts << post
-      Graph.create(name: :sample, post_id: post.id)
-    end
+    # posts.each do |post|
+    #   users.sample.posts << post
+    #   Graph.create(name: :sample, post_id: post.id)
+    # end
 
-    posts.each do |post|
-      rand(5).times do |y|
-        post.graph.tags << tags.sample
-      end
+    # posts.each do |post|
+    #   rand(5).times do |y|
+    #     post.graph.tags << tags.sample
+    #   end
 
-      post.graph.tags.each do |tag|
-        tag.tickets.each do |ticket|
-          post.tickets << ticket
-        end
-      end
-    end
+    #   post.graph.tags.each do |tag|
+    #     tag.tickets.each do |ticket|
+    #       post.tickets << ticket
+    #     end
+    #   end
+    # end
   end
 
 end
@@ -58,13 +58,13 @@ Sirloin shankle cow jowl short loin frankfurter strip steak meatball. Doner kevi
   end
 end
 
-def make_user
-  User.populate 5 do |user|
-    user.name = Faker::Name.name
-    user.email = Faker::Internet.safe_email
-    user.department_code = ['custRep', 'prodMan']
-  end
-end
+# def make_user
+#   User.populate 5 do |user|
+#     user.name = Faker::Name.name
+#     user.email = Faker::Internet.safe_email
+#     user.department_code = ['custRep', 'prodMan']
+#   end
+# end
 
 def make_categories
     categories = []
