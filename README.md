@@ -14,7 +14,7 @@ This application is intended for internal use and built as an API for existing c
 - Ruby on Rails
 - Coffeescript
 - Angular JS
-- 
+
 ##Developer's Note##
 
 Feedback First was developed as partial fulfillment to General Assembly's Web Development Immersive program. We were given 9 days to create an application of our choice using various technologies.
