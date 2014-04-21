@@ -23,8 +23,8 @@
       <label> Tags </label><br>
       <label>Search tags: <input ng-model="searchTags.name"/></label><br>
         <label ng-repeat='tag in tags| filter:searchTags:strict' class="tagCheckBox">
-          <input type="checkbox" value="{{tag.name}}" id="{{tag.id}}"
-            ng-model="tagsChosen[tag.id]" /> 
+          <input type="checkbox" value="{{tag.name}}"
+            ng-model="tagsChosen[$index]" /> 
               {{tag.name}}
         </label>
       </div><br>

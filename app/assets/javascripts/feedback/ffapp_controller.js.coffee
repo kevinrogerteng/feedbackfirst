@@ -80,7 +80,11 @@ ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService", "$
       $scope.categories = data
       )
 
+    $scope.graph = {}
+    $scope.post = {}
+
     $scope.tagsChosen = {}
+    $scope.tagsChose = []
 
     $scope.submitPost = ()->
       user = AuthService.getCurrentUser()
@@ -93,19 +97,18 @@ ffAppCtrl.controller("newPost", ["$scope", "Api", "$location", "AuthService", "$
       graph = {
           name: $scope.graph.title
         }
+
       Api.Posts.save(post, (data)->
         graph = {
           name:$scope.graph.title
           post_id: data.id
         }
         Api.Graph.save(graph, (data)->
-          tagsChose = []
-          console.log(tagsChose)
-          angular.forEach($scope.tagsChosen, (checked, id)->
-            if checked
-              tagsChose.push($scope.tags[id])
+          angular.forEach($scope.tagsChosen, (checked, index)->
+            if checked 
+              $scope.tagsChose.push($scope.tags[index])
             )
-          $http.put("/graphs/" + data.id + ".json", tags: tagsChose)
+          $http.put("/graphs/" + data.id + ".json", tags: $scope.tagsChose)
           )
         ) 
       $location.path("/users/" + user.id + "/posts")
